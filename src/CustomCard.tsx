@@ -82,7 +82,7 @@ export function CustomCard({ services }: { services: Service[] }) {
                 </div>
               </Card.Body>
               {index === services.length - 1 && showComponent && (
-                <div className="p-4">
+                <div className="py-4">
                   <Webconfig />
                 </div>
               )}

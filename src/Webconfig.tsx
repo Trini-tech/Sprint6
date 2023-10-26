@@ -1,4 +1,4 @@
-import { Form } from "react-bootstrap";
+import { Form, Button, Stack } from "react-bootstrap";
 import { ChangeEvent } from "react";
 import { useWebconfig } from "./WebconfigContext";
 
@@ -29,16 +29,65 @@ export function Webconfig() {
     }
   };
 
+  const handlePagMinusChange = () => {
+    if (pagValue === 0) {
+      setPagValue(0);
+    } else {
+      const newValue = pagValue - 1;
+      setPagValue(newValue);
+    }
+  };
+
+  const handlePagPlusChange = () => {
+    const newValue = pagValue + 1;
+    setPagValue(newValue);
+  };
+
+  const handleIdiomMinusChange = () => {
+    if (idiomValue === 0) {
+      setIdiomValue(0);
+    } else {
+      const newValue = idiomValue - 1;
+      setIdiomValue(newValue);
+    }
+  };
+
+  const handleIdiomPlusChange = () => {
+    const newValue = idiomValue + 1;
+    setIdiomValue(newValue);
+  };
+
+  const customButtonStyle = {
+    width: "40px",
+    height: "40px",
+  };
+
   return (
     <div className="d-flex justify-content-end">
       <div className="w-25">
-        <Form.Group className="d-flex inline-block justify-content-between pb-3">
+        <Form.Group className="d-flex inline-block justify-content-between pb-3 align-items-center">
           <Form.Label>Nombre de pàgines</Form.Label>
-          <Form.Control className="w-25" type="text" inputMode="numeric" min="0" value={pagValue} onChange={handlePagChange} />
+          <Stack direction="horizontal" gap={3} className="justify-content-end">
+            <Button className="rounded-circle" type="button" id="menos" onClick={handlePagMinusChange} style={customButtonStyle}>
+              -
+            </Button>
+            <Form.Control className="w-25" type="text" inputMode="numeric" min="0" value={pagValue} onChange={handlePagChange} />
+            <Button className="rounded-circle" type="button" id="mas" onClick={handlePagPlusChange} style={customButtonStyle}>
+              +
+            </Button>
+          </Stack>
         </Form.Group>
-        <Form.Group className="d-flex inline-block justify-content-between pb-3">
+        <Form.Group className="d-flex inline-block justify-content-between pb-3 align-items-center">
           <Form.Label>Nombre d'idiomes</Form.Label>
-          <Form.Control className="w-25" type="text" inputMode="numeric" min="0" value={idiomValue} onChange={handleIdiomChange} />
+          <Stack direction="horizontal" gap={3} className="justify-content-end">
+            <Button className="rounded-circle" type="button" id="menos" onClick={handleIdiomMinusChange} style={customButtonStyle}>
+              -
+            </Button>
+            <Form.Control className="w-25" type="text" inputMode="numeric" min="0" value={idiomValue} onChange={handleIdiomChange} />
+            <Button className="rounded-circle" type="button" id="mas" onClick={handleIdiomPlusChange} style={customButtonStyle}>
+              +
+            </Button>
+          </Stack>
         </Form.Group>
       </div>
     </div>
