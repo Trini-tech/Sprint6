@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useWebconfig } from "./WebconfigContext";
+import { useWebconfig } from "../WebconfigContext";
 import Card from "react-bootstrap/Card";
-import { Service } from "./data/services";
-import { Webconfig } from "./Webconfig";
+import { Service } from "../data/services";
+import { Webconfig } from "../Webconfig";
 
 export function CustomCard({ services }: { services: Service[] }) {
   const { idiomValue, pagValue, setIdiomValue, setPagValue } = useWebconfig();
@@ -82,7 +82,7 @@ export function CustomCard({ services }: { services: Service[] }) {
                 </div>
               </Card.Body>
               {index === services.length - 1 && showComponent && (
-                <div className="py-4">
+                <div className="p-4">
                   <Webconfig />
                 </div>
               )}
