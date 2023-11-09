@@ -1,6 +1,6 @@
 import { Link } from "../Link";
 
-import calc from "../images/calc.svg";
+import calc from "../assets/images/calc.svg";
 
 export function HomePage() {
   return (

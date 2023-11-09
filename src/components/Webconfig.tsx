@@ -1,9 +1,9 @@
 import { Form, Button, Stack } from "react-bootstrap";
 import { ChangeEvent } from "react";
-import { useWebconfig } from "./WebconfigContext";
+import { useMyContext } from "../contexts/MyContext";
 
 export function Webconfig() {
-  const { idiomValue, pagValue, setIdiomValue, setPagValue } = useWebconfig();
+  const { idiomValue, pagValue, setIdiomValue, setPagValue } = useMyContext();
 
   const handlePagChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = parseFloat(e.target.value);

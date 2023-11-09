@@ -1,17 +1,10 @@
 import { useState, useEffect } from "react";
-import { useWebconfig } from "../WebconfigContext";
+import { useMyContext } from "../contexts/MyContext";
 import Card from "react-bootstrap/Card";
-import { Service } from "../data/services";
-import { Webconfig } from "../Webconfig";
+import { Webconfig } from "./Webconfig";
 
-export function CustomCard({ services }: { services: Service[] }) {
-  const { idiomValue, pagValue, setIdiomValue, setPagValue } = useWebconfig();
-
-  const newarray = new Array(services.length).fill(false);
-
-  const [checkedState, setCheckedState] = useState(newarray);
-
-  const [total, setTotal] = useState(0);
+export function CustomCard() {
+  const { services, idiomValue, pagValue, setIdiomValue, setPagValue, total, setTotal, checkedState, setCheckedState } = useMyContext();
 
   const [showComponent, setShowComponent] = useState(false);
 
@@ -60,7 +53,13 @@ export function CustomCard({ services }: { services: Service[] }) {
     // Sumar idiomValue y pagValue al newTotal
     const totalPrice = newTotal + (idiomValue + pagValue) * 30;
     setTotal(totalPrice);
-  }, [idiomValue, pagValue, checkedState, services]);
+
+    if (checkedState[checkedState.length - 1] === false) {
+      if (showComponent) {
+        setShowComponent(!showComponent);
+      }
+    }
+  }, [idiomValue, pagValue, checkedState]);
 
   return (
     <main className="web-services">
